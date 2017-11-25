@@ -24,6 +24,12 @@ mongoose.connect(
   }
 );
 
+// DB
+const db = require("./models")
+const { Task } = db
+
+// TODO MOVE db STUFF OUT
+
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
