@@ -1,4 +1,5 @@
 const express = require("express");
+const routes = require("./routes")
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -14,6 +15,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.use(routes);
+
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
@@ -24,11 +27,15 @@ mongoose.connect(
   }
 );
 
-// DB
-const db = require("./models")
-const { Task } = db
 
-// TODO MOVE db STUFF OUT
+// DB
+// const db = require("./models")
+// const { Task } = db
+
+// // Routes
+// app.post("/api/saved", (req, res) => {
+
+// })
 
 // Send every request to the React app
 // Define any API routes before this runs
